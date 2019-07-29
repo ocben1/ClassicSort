@@ -4,21 +4,20 @@ using System.Text;
 
 namespace Vector
 {
-
     public class InsertionSort : ISorter
     {
-        public int Count { get; private set; } = 0;
-
         public void Sort<K>(K[] sequence, IComparer<K> comparer) where K : IComparable<K>
         {
-            for (var r = 1; r < sequence.Length; r++)
+            for (int i = 0; i < sequence.Length; i++)
             {
-                var current = sequence[r];
-
-                for (var l = r - 1; l >= 0 && sequence[l].CompareTo(current) > 0; l--)
+                int j = i;
+                while ((j > 0) && comparer.Compare(sequence[j - 1], sequence[j]) > 0)
                 {
-                    sequence[l + 1] = sequence[l];
-                    sequence[l] = current;
+                    K tmp = sequence[j];
+                    sequence[j] = sequence[j - 1];
+                    sequence[j - 1] = tmp;
+                    sequence[j] = sequence[j - 1];
+                    j = j - 1;
                 }
             }
         }

@@ -4,24 +4,24 @@ using System.Text;
 
 namespace Vector
 {
-
     public class SelectionSort : ISorter
     {
-        public int Count { get; private set; } = 0;
-
         public void Sort<K>(K[] sequence, IComparer<K> comparer) where K : IComparable<K>
         {
-            comparer = Comparer<K>.Default;
-            int index_of_min = 0;
-            for (int i = 0; i < Count - 1; i++)
+            for (int i = 0; i < sequence.Length; i++)
             {
-                index_of_min = i;
-                for (int index = i + 1; index < Count; index++)
+                int min = i;
+                for (int j = i + 1; j < sequence.Length; j++)
                 {
-                    if (comparer.Compare(sequence[index], sequence[index_of_min]) < 0)
-                        index_of_min = index;
+                    if (comparer.Compare(sequence[j], sequence[min]) < 0)
+                        min = j;
                 }
-                Swap(sequence[i], sequence[index_of_min]);
+                if (min != i)
+                {
+                    K tmp = sequence[min];
+                    sequence[min] = sequence[i];
+                    sequence[i] = tmp;
+                }
             }
         }
 

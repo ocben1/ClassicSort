@@ -242,28 +242,5 @@ namespace Vector
             if (comparer == null) Sorter.Sort(data, null);
             else Sorter.Sort(data, comparer);
         }
-        public void BubbleSort()
-        {
-            int n = Count;
-            IComparer<T> comparer = Comparer<T>.Default;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (comparer.Compare(data[j], data[j + 1]) > 0)
-                    {
-                        swap(data[j], data[j + 1]);
-                    }
-                }
-            }
-        }
-
-        void swap(T p1, T p2)
-        {
-            T temp = p1;
-            p1 = p2;
-            p2 = temp;
-
-        }
     }
 }
