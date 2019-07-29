@@ -12,13 +12,13 @@ namespace Vector
         {
             //comparer = Comparer<K>.Default;
 
-            for (int i = 0; i < sequence.Length; i++)
-            for (int j = 0; j < sequence.Length - i; j++)
+            for (int i = 0; i < sequence.Length -1; i++)
+            for (int j = 0; j < sequence.Length - i -1; j++)
                 if (comparer.Compare(sequence[j], sequence[j + 1]) > 0)
                 {
-                        K tmp = sequence[j + 1];
-                        sequence[j + 1] = sequence[j];
-                        sequence[j] = tmp;
+                        K tmp = sequence[j];
+                        sequence[j] = sequence[j+1];
+                        sequence[j+1] = tmp;
                     //Swap(sequence[j], sequence[j + 1]);
                 }
         }
