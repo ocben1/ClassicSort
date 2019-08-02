@@ -18,14 +18,12 @@ namespace Vector
                 while ((j > 0) && comparer.Compare(sequence[j - 1], sequence[j]) > 0) //while the elements arent sorted..
                 {
                     //perform the insertion as a variable swap
-                    K tmp = sequence[j];
-                    sequence[j] = sequence[j - 1];
-                    sequence[j - 1] = tmp;
-                    sequence[j] = sequence[j - 1];
+                    K tmp = sequence[j]; //chuck the element under consideration into a temp 
+                    sequence[j] = sequence[j - 1]; //reassign sequence[j] to the element to the left of it
+                    sequence[j - 1] = tmp; //element to the left of sequence[j] is now sequence[j]
                     //then consider previous element for comparison
                     j = j - 1;
                 }
-                
             }
         }
     }
